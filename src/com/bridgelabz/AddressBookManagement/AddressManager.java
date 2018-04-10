@@ -1,13 +1,17 @@
 package com.bridgelabz.AddressBookManagement;
 
 import java.io.File;
-
+import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.type.TypeReference;
 
 public class AddressManager 
 {
@@ -57,12 +61,9 @@ public class AddressManager
 		System.out.println("Enter the name of address book");
 		file=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/" +
 				""+scanner.next()+".json");
-//				try {
-//					Person person=objectMapper.readValue(new FileInputStream(filename), Person.class );
-//				} catch (IOException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
+		
+ 
+		
 		addressbook.operation();
 	}
 	public void saveAddressBook() 

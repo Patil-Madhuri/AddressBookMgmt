@@ -1,10 +1,13 @@
 package com.bridgelabz.AddressBookManagement;
 
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.List;
+
 import java.util.Scanner;
+
+
 
 public class AddressBook
 {
@@ -18,7 +21,7 @@ public class AddressBook
 		boolean status=true;
 		do{
 		System.out.println("Choose Operation you want to do");
-		System.out.println("1. Add\n2. Edit\n3. SortById\n4. SortByZip \n5.deletePerson\n6. Exit");
+		System.out.println("1. Add\n2. Edit\n3. SortByName\n4. SortByZip \n5.deletePerson\n6. Exit");
 		switch (scanner.nextInt()) {
 		case 1: addPerson();
 				break;
@@ -30,7 +33,7 @@ public class AddressBook
 		case 3: sortByName();
 				break;
 		case 4:
-			//sortByZip();
+			sortByZip();
 				break;
 		case 5:
 			deletePerson();
@@ -77,21 +80,6 @@ public class AddressBook
 		
 		person.setAddress(address);
 		list.add(person);
-		
-	/*	try {
-			
-			objectMapper.writeValue(file,list);
-			//System.out.println(arrayToJson);
-			
-			
-			
-		} catch (IOException e) {
-		
-			e.printStackTrace();
-		}*/
-		
-		//System.out.println(person.getFname()+" "+person.getLname()+" "+person.getAddress());
-	//person.setAddress(s.next());
 		
 	}
 	
@@ -192,7 +180,7 @@ public class AddressBook
 		{
 			public int compare(Person person1, Person person2) 
 			{
-			Person person;
+			
 			Address address1  = person1.getAddress();
 			Address address2 = person2.getAddress();
 			int zip1 = address1.getZip();
