@@ -6,9 +6,6 @@ import java.util.Collections;
 import java.util.Comparator;
 
 import java.util.Scanner;
-
-
-
 public class AddressBook
 {
 	Scanner scanner=new Scanner(System.in);
@@ -17,7 +14,7 @@ public class AddressBook
 	long contactNumber;
 	int zipcode,choice;
 	public void operation() {
-		
+		list = AddressManager.listReturn();
 		boolean status=true;
 		do{
 		System.out.println("Choose Operation you want to do");
@@ -49,9 +46,7 @@ public class AddressBook
 	public void addPerson()
 	{
 		
-		//ObjectMapper objectMapper = new ObjectMapper();
-    	//Set pretty printing of json
-    	//objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+		
 		Person person=new Person();
 		Address address=new Address();
 		System.out.println("Enter the First name:");
@@ -154,8 +149,7 @@ public class AddressBook
 			}
 	}
 	
-	
-	public void sortByName() 
+		public void sortByName() 
 	{
 		@SuppressWarnings("unused")
 		class SortByName implements Comparator<Person> 
@@ -169,7 +163,7 @@ public class AddressBook
 			 Collections.sort(list, new SortByName());
 			  for(Person person : list)
 			  {
-			  System.out.println(person.getFname());
+			  System.out.println(person);
 			  }
 		
 		

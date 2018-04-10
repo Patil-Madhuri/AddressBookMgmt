@@ -1,13 +1,10 @@
 package com.bridgelabz.AddressBookManagement;
 
+import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileWriter;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -20,6 +17,7 @@ public class AddressManager
 	}
 	ObjectMapper objectMapper = new ObjectMapper();
 	AddressBook addressbook=new AddressBook();
+	static ArrayList<Person> arrayList = new ArrayList<>();
 	File file;
 	static Scanner scanner=new Scanner(System.in);
 	public void createAddressBook()
@@ -37,18 +35,16 @@ public class AddressManager
 		try {
 				if (file.createNewFile()){
 					System.out.println("Address book is created!");
-					FileWriter fw=new FileWriter(file);
-					fw.write("{}");
-					fw.flush();
-					fw.close();
+					saveAddressBook();
+					
 				}
 				else{
 					System.out.println("Address book is already exists.");
+					saveAddressBook();
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
 				}
-		
 	}
 	public void openAddressBook() {
 		File path=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/");
@@ -61,19 +57,54 @@ public class AddressManager
 		System.out.println("Enter the name of address book");
 		file=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/" +
 				""+scanner.next()+".json");
-		
- 
+		try
+		{
+			BufferedReader reader = new BufferedReader(new FileReader(file));
+			String arrayToJson;
+			if((arrayToJson = reader.readLine()) != null)
+			{
+				TypeReference<ArrayList<Person>> type = new TypeReference<ArrayList<Person>>() {};
+				arrayList = objectMapper.readValue(arrayToJson, type);
+				
+			}
+		}catch(IOException e)
+		{
+			e.printStackTrace();
+		}
 		
 		addressbook.operation();
+		saveAddressBook();
 	}
+	public static ArrayList<Person> listReturn()
+	{
+		return arrayList;
+	}
+//	public void saveAddressBook(String filename) 
+//	{
+//		System.out.println("Enter the filename");
+//		String file1 = scanner.next();
+//		file = new File(filename);
+//		ObjectMapper mapper = new ObjectMapper();
+//		try {
+//			ArrayList<Person> list2 = mapper.readValue(file, new TypeReference<List<Person>>(){});
+//			System.out.println(list2);
+//			
+//			ObjectMapper objectMapper = new ObjectMapper();
+//			objectMapper.writeValue(new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/"), list);
+//			String jsString = objectMapper.writeValueAsString(list);
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	public void saveAddressBook() 
 	{
 		ArrayList<Person> arrayList=new ArrayList<Person>();
 		arrayList=addressbook.list();
-		System.out.println(arrayList);
+		
 		
 		try {
 			objectMapper.writeValue(file, arrayList);
+			System.out.println(arrayList);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -82,7 +113,8 @@ public class AddressManager
 	
 	public void saveAsAddressBook()
 	{
-		
+//		ObjectMapper objectMapper = new ObjectMapper();
+//		objectMapper.writeValue(resultFile, value);
 	}
 	public void quit() 
 	{
