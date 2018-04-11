@@ -121,20 +121,32 @@ public class AddressManager
 	 */
 	public void saveAsAddressBook()
 	{
-		System.out.println("Enter old file name: ");
-		file=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/" +
-				""+scanner.next()+".json");
-		System.out.println("Enter new file name: ");
-		File file1=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/" +
-				""+scanner.next()+".json");
-		if(file.renameTo(file1))
-		{
-			System.out.println("Your file is renamed sucesfully......");
-		}
-		else
-		{
-			System.out.println("File is not renamed");
-		}
+		System.out.println("Enter the name of address book");
+		file=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/" +""+scanner.next()+".json");
+		ArrayList<Person> arrayList=new ArrayList<Person>();
+		arrayList=addressbook.list();
+		try {
+			objectMapper.writeValue(file, arrayList);
+			System.out.println("File Save Successfully");
+			System.out.println(arrayList);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+//		System.out.println("Enter old file name: ");
+//		file=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/" +
+//				""+scanner.next()+".json");
+//		System.out.println("Enter new file name: ");
+//		File file1=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/" +
+//				""+scanner.next()+".json");
+//		if(file.renameTo(file1))
+//		{
+//			System.out.println("Your file is renamed sucesfully......");
+//		}
+//		else
+//		{
+//			System.out.println("File is not renamed");
+//		}
 	}
 
 	public static void main(String[] args) 

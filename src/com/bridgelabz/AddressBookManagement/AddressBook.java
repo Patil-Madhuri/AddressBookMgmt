@@ -29,7 +29,7 @@ public class AddressBook
 		do{
 		System.out.println("Choose Operation you want to do");
 		System.out.println("1. Add Details of Person\n2. Edit Details of Person \n3.Delete Details of Person"
-				+ "\n4. Sort Details of Person By Name \n5. Sort Details of Person By Zip \n6.Print the Address Book \n7. Exit");
+				+ "\n4. Sort Details of Person By Name \n5. Sort Details of Person By Zip \n6. Exit");
 		switch (scanner.nextInt()) 
 		{
 		case 1: addPerson();
@@ -47,9 +47,6 @@ public class AddressBook
 			sortByName();
 			break;
 		case 6:
-			list();
-			break;
-		case 7:	
 			status=false;
 				break;
 		}
