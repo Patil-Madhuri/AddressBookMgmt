@@ -1,37 +1,81 @@
 package com.bridgelabz.AddressBookManagement;
+/***************************************************************************************
+ * @purpose : This program is used for the address book to get and set the 
+ * 		`		address of person separately and prit using toString()
+ * @author  : Madhuri Chaudhari
+ * @version : 1.0
+ * @date    : 09/04/2018
+ ***************************************************************************************/
 public class Person
 {
-	private String fname;
-	private String lname;
-	private Address address;
-	private long contact;
-	public long getContact() {
-		return contact;
+	private String mFirstName;
+	private String mLastName;
+	private Address mAddress;
+	private long mContactNumber;
+	
+	/**
+	 * @return first name of person
+	 */
+	public String getmFirstName() 
+	{
+		return mFirstName;
 	}
-	public void setContact(long contact) {
-		this.contact = contact;
+	/**
+	 * @param mFirstName
+	 *  set first name of person
+	 */
+	public void setmFirstName(String mFirstName) {
+		this.mFirstName = mFirstName;
 	}
-	public String getFname() {
-		return fname;
+	/**
+	 * @return last name of person
+	 */
+	public String getmLastName() {
+		return mLastName;
 	}
-	public void setFname(String fname) {
-		this.fname = fname;
+	/**
+	 * @param mLastName
+	 * set last name of person
+	 */
+	public void setmLastName(String mLastName) 
+	{
+		this.mLastName = mLastName;
 	}
-	public String getLname() {
-		return lname;
+	/**
+	 * @return address of person
+	 */
+	public Address getmAddress() {
+		return mAddress;
 	}
-	public void setLname(String lname) {
-		this.lname = lname;
+	/**
+	 * @param mAddress
+	 * set address of person
+	 */
+	public void setmAddress(Address mAddress) {
+		this.mAddress = mAddress;
 	}
-	public Address getAddress() {
-		return address;
+	/**
+	 * @return contact number of person
+	 */
+	public long getmContactNumber() {
+		return mContactNumber;
 	}
-	public void setAddress(Address address) {
-		this.address = address;
+	/**
+	 * @param mContactNumber
+	 * set contact number of person
+	 */
+	public void setmContactNumber(long mContactNumber) {
+		this.mContactNumber = mContactNumber;
 	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 * print the details of person
+	 */
 	@Override
-	public String toString() {
-		return "Person [fname=" + fname + ", lname=" + lname + ", contact=" +contact +"address="
-				+ address + "]";
+	public String toString() 
+	{
+		return "Person [mFirstName=" + mFirstName + ", mLastName=" + mLastName + ", mAddress=" + mAddress
+				+ ", mContactNumber=" + mContactNumber + "]";
 	}
+
 }

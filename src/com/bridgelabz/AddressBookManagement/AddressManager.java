@@ -1,31 +1,41 @@
 package com.bridgelabz.AddressBookManagement;
-
+/***************************************************************************
+ * @purpose : This program is used for manage the address book
+ * @author  : Madhuri Chaudhari
+ * @version : 1.0
+ * @date    : 09/04/2018
+ ***************************************************************************/
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.type.TypeReference;
 
 public class AddressManager 
 {
-	static {
+	static
+	{
 	System.out.println("*****@ Address Book Manager @*****");	
 	}
+	
 	ObjectMapper objectMapper = new ObjectMapper();
 	AddressBook addressbook=new AddressBook();
 	static ArrayList<Person> arrayList = new ArrayList<>();
 	File file;
 	static Scanner scanner=new Scanner(System.in);
+	
+	/**
+	 * create new address book
+	 */
 	public void createAddressBook()
 	{
-		File path=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/");
-		File[] listFile=path.listFiles();
+		File lPath=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/");
+		File[] lListFile=lPath.listFiles();
 		System.out.println("list of file in folder: ");
-		for(File file1: listFile)
+		for(File file1: lListFile)
 		{
 			System.out.println(file1.getName());
 			}
@@ -40,17 +50,22 @@ public class AddressManager
 				}
 				else{
 					System.out.println("Address book is already exists.");
-					saveAddressBook();
+				
 				}
 			} catch (IOException e) {
 				e.printStackTrace();
 				}
 	}
-	public void openAddressBook() {
-		File path=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/");
-		File[] listFile=path.listFiles();
+	
+	/**
+	 * Open address book
+	 */
+	public void openAddressBook()
+	{
+		File lPath=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/");
+		File[] lListFile=lPath.listFiles();
 		System.out.println("list of file in folder: ");
-		for(File file1: listFile)
+		for(File file1: lListFile)
 		{
 			System.out.println(file1.getName());
 			}
@@ -67,6 +82,7 @@ public class AddressManager
 				arrayList = objectMapper.readValue(arrayToJson, type);
 				
 			}
+			reader.close();
 		}catch(IOException e)
 		{
 			e.printStackTrace();
@@ -75,35 +91,24 @@ public class AddressManager
 		addressbook.operation();
 		saveAddressBook();
 	}
+	/**
+	 * @return list of the person
+	 */
 	public static ArrayList<Person> listReturn()
 	{
 		return arrayList;
 	}
-//	public void saveAddressBook(String filename) 
-//	{
-//		System.out.println("Enter the filename");
-//		String file1 = scanner.next();
-//		file = new File(filename);
-//		ObjectMapper mapper = new ObjectMapper();
-//		try {
-//			ArrayList<Person> list2 = mapper.readValue(file, new TypeReference<List<Person>>(){});
-//			System.out.println(list2);
-//			
-//			ObjectMapper objectMapper = new ObjectMapper();
-//			objectMapper.writeValue(new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/"), list);
-//			String jsString = objectMapper.writeValueAsString(list);
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+
+	/**
+	 * save the address book
+	 */
 	public void saveAddressBook() 
 	{
 		ArrayList<Person> arrayList=new ArrayList<Person>();
 		arrayList=addressbook.list();
-		
-		
 		try {
 			objectMapper.writeValue(file, arrayList);
+			System.out.println("File Save Successfully");
 			System.out.println(arrayList);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -116,31 +121,28 @@ public class AddressManager
 //		ObjectMapper objectMapper = new ObjectMapper();
 //		objectMapper.writeValue(resultFile, value);
 	}
-	public void quit() 
-	{
-	
-	}
 
-	public static void main(String[] args) {
-		
-	AddressManager manager=new AddressManager();
-		do{
-		System.out.println("Make a choice from below");
-		System.out.println("1.Create Address-Book \n2. Open Address-Book \n3. Save Address-Book\n4. Save As Address-Book\n5.Quit");
-		File file = null;
-		switch (scanner.nextInt()) {
-		case 1:	manager.createAddressBook();
-				break;
-		case 2:	manager.openAddressBook();
-				break;
-		case 3:	manager.saveAddressBook();
-				break;
-		case 4:	manager.saveAsAddressBook();
-				break;
-		
-		case 5:System.exit(0);
-			
-		}
+	public static void main(String[] args) 
+	{
+		AddressManager manager=new AddressManager();
+		do
+		{
+			System.out.println("Make a choice from below");
+			System.out.println("1.Create Address-Book \n2. Open Address-Book \n3. Save Address-Book\n4. Save As Address-Book\n5.Quit");
+			switch (scanner.nextInt()) 
+			{
+			case 1:	manager.createAddressBook();
+					break;
+			case 2:	manager.openAddressBook();
+					break;
+			case 3:	manager.saveAddressBook();
+					break;
+			case 4:	manager.saveAsAddressBook();
+					break;
+			case 5:
+				System.out.println("Address Book Closed");
+				System.exit(0);				
+			}
 		}while(true);
 	}
 	

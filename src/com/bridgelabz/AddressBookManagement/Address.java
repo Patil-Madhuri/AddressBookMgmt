@@ -1,30 +1,71 @@
 package com.bridgelabz.AddressBookManagement;
-
-public class Address {
-	private String city;
-	private int zip;
-	private String state;
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
+/***************************************************************************************
+ * @purpose : This program is used for the address book to get and set the 
+ * 		`		values of person variables separately and print using toString()
+ * @author  : Madhuri Chaudhari
+ * @version : 1.0
+ * @date    : 09/04/2018
+ ***************************************************************************************/
+public class Address 
+{
+	private String mCity;
+	private int mZip;
+	private String mState;
 	
-	public int getZip() {
-		return zip;
+	/**
+	 * @return city of person
+	 */
+	public String getmCity() 
+	{
+		return mCity; 
 	}
-	public void setZip(int zip) {
-		this.zip = zip;
+
+	/**
+	 * @param mCity
+	 * set city of person
+	 */
+	public void setmCity(String mCity) {
+		this.mCity = mCity;
 	}
-	public String getState() {
-		return state;
+
+	/**
+	 * @return Zipcode of person city
+	 */
+	public int getmZip() {
+		return mZip;
 	}
-	public void setState(String state) {
-		this.state = state;
+
+	/**
+	 * @param mZip
+	 * set the zip code of person city
+	 */
+	public void setmZip(int mZip) {
+		this.mZip = mZip;
 	}
+
+	/**
+	 * @return the state of person
+	 */
+	public String getmState() {
+		return mState;
+	}
+
+	/**
+	 * @param mState
+	 * set the state of person
+	 */
+	public void setmState(String mState) {
+		this.mState = mState;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 * Print the address of person
+	 */
 	@Override
 	public String toString() {
-		return "Address [city=" + city + ", zip=" + zip + ", state=" + state + "]";
+		return "Address [mCity=" + mCity + ", mZip=" + mZip + ", mState=" + mState + "]";
 	}
+
+	
 }
