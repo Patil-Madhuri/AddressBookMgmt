@@ -122,17 +122,21 @@ public class AddressManager
 	public void saveAsAddressBook()
 	{
 		System.out.println("Enter the name of address book");
-		file=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/" +""+scanner.next()+".json");
+		String filename = scanner.next();
+		System.out.println("Enter the extension of your file: ");
+		String extension = scanner.next();
+		file=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/" +""+filename+extension);
 		ArrayList<Person> arrayList=new ArrayList<Person>();
 		arrayList=addressbook.list();
 		try {
 			objectMapper.writeValue(file, arrayList);
-			System.out.println("File Save Successfully");
+		
 			System.out.println(arrayList);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}		
+		// Rename file
 //		System.out.println("Enter old file name: ");
 //		file=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/" +
 //				""+scanner.next()+".json");
