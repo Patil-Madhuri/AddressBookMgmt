@@ -116,10 +116,25 @@ public class AddressManager
 		}		
 	}
 	
+	/**
+	 *  Rename the address Book
+	 */
 	public void saveAsAddressBook()
 	{
-//		ObjectMapper objectMapper = new ObjectMapper();
-//		objectMapper.writeValue(resultFile, value);
+		System.out.println("Enter old file name: ");
+		file=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/" +
+				""+scanner.next()+".json");
+		System.out.println("Enter new file name: ");
+		File file1=new File("/home/bridgeit/MADHURI/AddressBookMgmt/Files/" +
+				""+scanner.next()+".json");
+		if(file.renameTo(file1))
+		{
+			System.out.println("Your file is renamed sucesfully......");
+		}
+		else
+		{
+			System.out.println("File is not renamed");
+		}
 	}
 
 	public static void main(String[] args) 
