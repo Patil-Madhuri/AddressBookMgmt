@@ -15,9 +15,8 @@ public class AddressBook
 {
 	Scanner scanner=new Scanner(System.in);
 	ArrayList<Person> list=new ArrayList<Person>();
-	String mfirstName,mLastName,mCity,mState;
-	long mContactNumber;
-	int mZipCode,mChoice;
+	String mfirstName,mLastName,mCity,mState, mContactNumber,mZipCode;
+	int mChoice;
 	
 	/**
 	 *  Operayion perform to person
@@ -71,7 +70,13 @@ public class AddressBook
 		person.setmLastName(mLastName);
 	
 		System.out.println("Enter the contact number:");
-		mContactNumber= scanner.nextLong();
+		mContactNumber= scanner.next();
+		while(!isTenDigit(mContactNumber))
+		{
+			System.out.println("Invalid contact number");
+			System.out.println("Enter the contact number:");
+			mContactNumber= scanner.next();
+		}
 		person.setmContactNumber(mContactNumber);
 		
 		System.out.println("Enter the City:");
@@ -79,7 +84,13 @@ public class AddressBook
 		address.setmCity(mCity);
 	
 		System.out.println("Enter the Zip:");
-		 mZipCode=scanner.nextInt();
+		 mZipCode=scanner.next();
+		 while(!isSixDigit(mZipCode))
+		 {
+			 System.out.println("Invalid Zip code");
+			 System.out.println("Enter the Zip:");
+			 mZipCode=scanner.next();
+		 }
 		address.setmZip(mZipCode);
 	
 		System.out.println("Enter the State:");
@@ -115,8 +126,14 @@ public class AddressBook
 					 person.setmLastName(mLastName); 
 					break;
 				case 2:
-					System.out.println("Enter your Contact number");
-					mContactNumber = scanner.nextLong();
+					System.out.println("Enter the contact number:");
+					mContactNumber= scanner.next();
+					while(!isTenDigit(mContactNumber))
+					{
+						System.out.println("Invalid contact number");
+						System.out.println("Enter the contact number:");
+						mContactNumber= scanner.next();
+					}
 					person.setmContactNumber(mContactNumber);
 					break;
 				case 3:
@@ -131,8 +148,14 @@ public class AddressBook
 					address.setmState(mState);
 					break;
 				case 5:
-					System.out.println("Enter your zipcode:");
-					mZipCode = scanner.nextInt();
+					System.out.println("Enter the Zip:");
+					 mZipCode=scanner.next();
+					 while(!isSixDigit(mZipCode))
+					 {
+						 System.out.println("Invalid Zip code");
+						 System.out.println("Enter the Zip:");
+						 mZipCode=scanner.next();
+					 }
 					address.setmZip(mZipCode);
 					break;
 				case 6:
@@ -143,6 +166,7 @@ public class AddressBook
 						System.out.println("Invalid choice");
 				}
 			}
+		
 			System.out.println(person);
 		}	
 		
@@ -201,9 +225,9 @@ public class AddressBook
 			
 			Address address1  = person1.getmAddress();
 			Address address2 = person2.getmAddress();
-			int zip1 = address1.getmZip();
-			int zip2 = address2.getmZip();
-				return zip1 - zip2;
+			String zip1 = address1.getmZip();
+			String zip2 = address2.getmZip();
+				return zip1.compareToIgnoreCase(zip2);
 			}
 		}
 		Collections.sort(list, new SortByZip());
@@ -221,7 +245,26 @@ public class AddressBook
 		return list;
 	}
 	
-	
+	public static boolean isTenDigit(String number)
+	{
+		String matcher="\\d{10}";
+		if((number.matches(matcher)))
+		{
+			return true;
+			
+		}
+		return false;
+	}
+	public static boolean isSixDigit(String number)
+	{
+		String matcher="\\d{6}";
+		if((number.matches(matcher)))
+		{
+			return true;
+			
+		}
+		return false;
+	}
 //public static void main(String[] args) {
 //	AddressBook a=new AddressBook();
 //	a.addPerson();

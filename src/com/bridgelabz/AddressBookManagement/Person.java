@@ -11,7 +11,7 @@ public class Person
 	private String mFirstName;
 	private String mLastName;
 	private Address mAddress;
-	private long mContactNumber;
+	private String mContactNumber;
 	
 	/**
 	 * @return first name of person
@@ -57,14 +57,14 @@ public class Person
 	/**
 	 * @return contact number of person
 	 */
-	public long getmContactNumber() {
+	public String getmContactNumber() {
 		return mContactNumber;
 	}
 	/**
 	 * @param mContactNumber
 	 * set contact number of person
 	 */
-	public void setmContactNumber(long mContactNumber) {
+	public void setmContactNumber(String mContactNumber) {
 		this.mContactNumber = mContactNumber;
 	}
 	/* (non-Javadoc)
