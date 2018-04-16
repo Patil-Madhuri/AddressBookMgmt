@@ -15,7 +15,8 @@ public class AddressBook
 {
 	Scanner scanner=new Scanner(System.in);
 	ArrayList<Person> list=new ArrayList<Person>();
-	String mfirstName,mLastName,mCity,mState, mContactNumber,mZipCode;
+	String mfirstName,mLastName,mCity,mState, mContactNumber;
+	int mZipCode;
 	int mChoice;
 	
 	/**
@@ -28,7 +29,7 @@ public class AddressBook
 		do{
 		System.out.println("Choose Operation you want to do");
 		System.out.println("1. Add Details of Person\n2. Edit Details of Person \n3.Delete Details of Person"
-				+ "\n4. Sort Details of Person By Name \n5. Sort Details of Person By Zip \n6. Exit");
+				+ "\n4. Sort Details of Person By zip \n5. Sort Details of Person By name \n6. Exit");
 		switch (scanner.nextInt()) 
 		{
 		case 1: addPerson();
@@ -84,13 +85,8 @@ public class AddressBook
 		address.setmCity(mCity);
 	
 		System.out.println("Enter the Zip:");
-		 mZipCode=scanner.next();
-		 while(!isSixDigit(mZipCode))
-		 {
-			 System.out.println("Invalid Zip code");
-			 System.out.println("Enter the Zip:");
-			 mZipCode=scanner.next();
-		 }
+		 mZipCode=scanner.nextInt();
+		
 		address.setmZip(mZipCode);
 	
 		System.out.println("Enter the State:");
@@ -149,13 +145,8 @@ public class AddressBook
 					break;
 				case 5:
 					System.out.println("Enter the Zip:");
-					 mZipCode=scanner.next();
-					 while(!isSixDigit(mZipCode))
-					 {
-						 System.out.println("Invalid Zip code");
-						 System.out.println("Enter the Zip:");
-						 mZipCode=scanner.next();
-					 }
+					 mZipCode=scanner.nextInt();
+					
 					address.setmZip(mZipCode);
 					break;
 				case 6:
@@ -197,13 +188,12 @@ public class AddressBook
 	 */
 	public void sortByName() 
 	{
-		@SuppressWarnings("unused")
 		class SortByName implements Comparator<Person> 
 		{
 			@Override
 			public int compare(Person person1, Person person2)
 			{
-				return person1.getmFirstName() .compareToIgnoreCase(person2.getmFirstName());
+				return person1.getmLastName().compareToIgnoreCase(person2.getmLastName());
 			}
 		}
 		Collections.sort(list, new SortByName());
@@ -211,30 +201,27 @@ public class AddressBook
 		{
 			 System.out.println(person);
 		}
-	}
+}
 	/**
 	 *  Sort the details of the person in address book in asecnding order
 	 *  using the comparator on the basis of Zip code of person city
 	 */
 	public void sortByZip() 
 	{
-		class SortByZip implements Comparator<Person>
-		{
-			public int compare(Person person1, Person person2) 
-			{
-			
-			Address address1  = person1.getmAddress();
-			Address address2 = person2.getmAddress();
-			String zip1 = address1.getmZip();
-			String zip2 = address2.getmZip();
-				return zip1.compareToIgnoreCase(zip2);
+		class SortByZip implements Comparator<Person> {
+			public int compare(Person person1, Person person2) {
+
+				Address address1 = person1.getmAddress();
+				Address address2 = person2.getmAddress();
+				int zip1 = address1.getmZip();
+				int zip2 = address2.getmZip();
+				return zip1 - zip2;
 			}
 		}
 		Collections.sort(list, new SortByZip());
-		  for(Person address : list)
-		  {
-		  System.out.println(address);
-		  }
+		for (Person address : list) {
+			System.out.println(address);
+}
 	}
 	
 	/**
@@ -273,5 +260,6 @@ public class AddressBook
 //	a.sortByZip();
 //}
 	
+
 
 }

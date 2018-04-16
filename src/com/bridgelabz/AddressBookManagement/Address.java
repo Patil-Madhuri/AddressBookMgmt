@@ -9,7 +9,7 @@ package com.bridgelabz.AddressBookManagement;
 public class Address 
 {
 	private String mCity;
-	private String mZip;
+	private int mZip;
 	private String mState;
 	
 	/**
@@ -31,7 +31,7 @@ public class Address
 	/**
 	 * @return Zipcode of person city
 	 */
-	public String getmZip() {
+	public int getmZip() {
 		return mZip;
 	}
 
@@ -39,7 +39,7 @@ public class Address
 	 * @param mZip
 	 * set the zip code of person city
 	 */
-	public void setmZip(String mZip) {
+	public void setmZip(int mZip) {
 		this.mZip = mZip;
 	}
 
