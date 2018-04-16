@@ -171,8 +171,18 @@ public class AddressManager
 			case 4:	manager.saveAsAddressBook();
 					break;
 			case 5:
-				System.out.println("Address Book Closed");
-				System.exit(0);				
+				System.out.println("Do you want to Save details: y/n");
+				char ch = scanner.next().charAt(0);
+				if(ch == 'y')
+				{
+					manager.saveAddressBook();
+				}
+				else
+				{
+					System.out.println("Address Book Closed");
+					System.exit(0);
+				}
+								
 			}
 		}while(true);
 	}

@@ -1,6 +1,6 @@
 package com.bridgelabz.AddressBookManagement;
 /***************************************************************************************
- * @purpose : This program is used for the address book to add, detele, edit the deatils
+ * @purpose : This program is used for the address book to add, delete, edit the deatils
  * 				of the person, and sort details by name, sort details by zip code
  * @author  : Madhuri Chaudhari
  * @version : 1.0
