@@ -89,7 +89,7 @@ public class AddressManager
 		}
 		
 		addressbook.operation();
-		saveAddressBook();
+		
 	}
 	/**
 	 * @return list of the person

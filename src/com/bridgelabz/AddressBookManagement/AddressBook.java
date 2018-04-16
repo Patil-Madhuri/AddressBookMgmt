@@ -48,6 +48,7 @@ public class AddressBook
 			break;
 		case 6:
 			status=false;
+			
 				break;
 		}
 		}
@@ -86,7 +87,6 @@ public class AddressBook
 	
 		System.out.println("Enter the Zip:");
 		 mZipCode=scanner.nextInt();
-		
 		address.setmZip(mZipCode);
 	
 		System.out.println("Enter the State:");
